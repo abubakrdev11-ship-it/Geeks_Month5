@@ -95,3 +95,14 @@ class ProductCreateSerializer(serializers.ModelSerializer):
             ProductImage.objects.create(product=product, image=img)
 
         return product
+    
+class CategorySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Category
+        fields = "__all__"
+
+
+class ModelProductSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ModelProduct
+        fields = "__all__"

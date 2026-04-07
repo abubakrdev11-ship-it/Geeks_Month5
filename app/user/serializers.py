@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer as SimpleJWTTokenObtainPairSerializer
-from app.user.models import User
+from app.user.models import  User
 
 class RegisterSerializer(serializers.ModelSerializer): 
     password = serializers.CharField(write_only=True)

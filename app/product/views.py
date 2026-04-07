@@ -1,11 +1,12 @@
 from rest_framework import mixins, status
+from rest_framework import viewsets
 from rest_framework.viewsets import GenericViewSet
 from rest_framework.permissions import IsAuthenticated, AllowAny
 
-from app.product.models import Product
+from app.product.models import Category, ModelProduct, Product
 from app.product.serializers import (
-    ProductCreateSerializer, ProductDetailSerializer,
-    ProductSerializer
+    ModelProductSerializer, ProductCreateSerializer, ProductDetailSerializer,
+    ProductSerializer, CategorySerializer
 )
 
 class ProductViewSet(
@@ -37,3 +38,12 @@ class ProductViewSet(
         elif self.action == "retrieve":
             return [IsAuthenticated()]
         return [AllowAny()]
+
+class CategoryViewSet(viewsets.ModelViewSet):
+    queryset = Category.objects.all()
+    serializer_class = CategorySerializer
+
+
+class ModelProductViewSet(viewsets.ModelViewSet):
+    queryset = ModelProduct.objects.all()
+    serializer_class = ModelProductSerializer
